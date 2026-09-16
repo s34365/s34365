@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Portfolio | Kanruthai Jaisawang</title>
+
+    <style>
+
+        /* ========================================
+           ตั้งค่าพื้นฐาน
+        ======================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Tahoma", "Arial", sans-serif;
+            background: #F9D1D9;
+            color: #000000;
+            overflow-x: hidden;
+        }
+
+
+        /* ========================================
+           จุดสีขาวจำนวนมากบนพื้นหลัง
+        ======================================== */
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -10;
+            pointer-events: none;
+
+            background-image:
+                radial-gradient(circle, #FFFFFF 2px, transparent 2px),
+                radial-gradient(circle, #FFFFFF 1.5px, transparent 1.5px),
+                radial-gradient(circle, #FFFFFF 2.5px, transparent 2.5px);
+
+            background-size:
+                45px 45px,
+                70px 70px,
+                100px 100px;
+
+            background-position:
+                0 0,
+                20px 30px,
+                50px 15px;
+
+            opacity: 0.9;
+        }
+
+
+        /* ========================================
+           แถบเมนูด้านบน
+        ======================================== */
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+
+            width: 100%;
+
+            z-index: 1000;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 18px 15px;
+
+            background: rgba(249, 209, 217, 0.95);
+
+            backdrop-filter: blur(8px);
+
+            border-bottom: 2px solid #000000;
+        }
+
+
+        .nav-menu {
+            list-style: none;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            gap: 15px;
+
+            flex-wrap: wrap;
+        }
+
+
+        /* ========================================
+           ปุ่มเมนู
+        ======================================== */
+
+        .nav-menu button {
+            display: inline-block;
+
+            color: #000000;
+
+            background: #FFFFFF;
+
+            border: 2px solid #000000;
+
+            border-radius: 30px;
+
+            padding: 10px 18px;
+
+            font-size: 16px;
+
+            font-family: "Tahoma", "Arial", sans-serif;
+
+            font-weight: bold;
+
+            transition: 0.3s ease;
+
+            cursor: pointer;
+        }
+
+
+        .nav-menu button:hover {
+            background: #F9D1D9;
+
+            transform: translateY(-4px) scale(1.05);
+
+            box-shadow: 4px 4px 0 #000000;
+        }
+
+
+        /* ========================================
+           แต่ละ Section
+        ======================================== */
+
+        section {
+            min-height: 100vh;
+
+            padding: 150px 30px 80px;
+
+            display: flex;
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: flex-start;
+
+            scroll-margin-top: 100px;
+        }
+
+
+        /* ========================================
+           หัวข้อใหญ่
+        ======================================== */
+
+        .main-title {
+            font-size: clamp(55px, 9vw, 110px);
+
+            font-weight: 900;
+
+            color: #000000;
+
+            text-align: center;
+
+            letter-spacing: 4px;
+
+            margin-bottom: 50px;
+
+            text-shadow: 5px 5px 0 #FFFFFF;
+        }
+
+
+        .page-title {
+            font-size: clamp(42px, 7vw, 80px);
+
+            font-weight: 900;
+
+            color: #000000;
+
+            text-align: center;
+
+            margin-bottom: 45px;
+
+            text-shadow: 4px 4px 0 #FFFFFF;
+        }
+
+
+        /* ========================================
+           รูป Portfolio หน้าแรก
+        ======================================== */
+
+        .profile-image {
+            width: 330px;
+            height: 330px;
+
+            background: #FFFFFF;
+
+            border: 4px solid #000000;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 45px;
+
+            box-shadow: 10px 10px 0 #000000;
+        }
+
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+        }
+
+
+        /* ========================================
+           กล่องข้อความ
+        ======================================== */
+
+        .info-box {
+            width: min(900px, 95%);
+
+            background: #FFFFFF;
+
+            border: 3px solid #000000;
+
+            border-radius: 25px;
+
+            padding: 35px 40px;
+
+            box-shadow: 8px 8px 0 #000000;
+        }
+
+
+        .info-box p {
+            font-size: 18px;
+
+            line-height: 1.9;
+
+            margin-bottom: 8px;
+
+            color: #000000;
+        }
+
+
+        .info-label {
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+
+        /* ========================================
+           ส่วนคำนำ
+        ======================================== */
+
+        .introduction-box {
+            max-width: 900px;
+        }
+
+
+        .introduction-box p {
+            font-size: 20px;
+
+            line-height: 2;
+
+            text-align: justify;
+
+            color: #000000;
+        }
+
+
+        /* ========================================
+           ผลงานและกิจกรรม
+        ======================================== */
+
+        .works-grid {
+            width: min(1000px, 95%);
+
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 30px;
+        }
+
+
+        .work-card {
+            background: #FFFFFF;
+
+            border: 3px solid #000000;
+
+            border-radius: 20px;
+
+            padding: 15px;
+
+            box-shadow: 7px 7px 0 #000000;
+
+            transition: 0.3s ease;
+        }
+
+
+        .work-card:hover {
+            transform: translateY(-8px);
+        }
+
+
+        .work-card img {
+            display: block;
+
+            width: 100%;
+
+            aspect-ratio: 1 / 1;
+
+            object-fit: cover;
+
+            border: 2px solid #000000;
+
+            border-radius: 12px;
+        }
+
+
+        .work-title {
+            text-align: center;
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+            padding: 15px 5px 5px;
+
+            color: #000000;
+
+            line-height: 1.6;
+        }
+
+
+        /* ========================================
+           ช่องทางการติดต่อ
+        ======================================== */
+
+        .contact-box {
+            width: min(700px, 95%);
+
+            background: #FFFFFF;
+
+            border: 3px solid #000000;
+
+            border-radius: 25px;
+
+            padding: 40px;
+
+            box-shadow: 8px 8px 0 #000000;
+        }
+
+
+        .contact-item {
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            padding: 20px 0;
+
+            border-bottom: 2px dashed #000000;
+
+            font-size: 20px;
+
+            color: #000000;
+        }
+
+
+        .contact-item:last-child {
+            border-bottom: none;
+        }
+
+
+        .contact-icon {
+            font-size: 30px;
+        }
+
+
+        .contact-item a {
+            color: #000000;
+
+            font-weight: bold;
+
+            text-decoration: none;
+        }
+
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* ========================================
+           ตัวโน้ต + โบว์ + หัวใจ ลอยไปมา
+        ======================================== */
+
+        .floating {
+            position: fixed;
+
+            z-index: -1;
+
+            color: #000000;
+
+            font-size: 32px;
+
+            pointer-events: none;
+
+            user-select: none;
+
+            animation: floating 7s ease-in-out infinite;
+        }
+
+
+        .f1 {
+            top: 15%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .f2 {
+            top: 25%;
+            right: 6%;
+            animation-delay: 1s;
+        }
+
+        .f3 {
+            top: 42%;
+            left: 8%;
+            animation-delay: 2s;
+        }
+
+        .f4 {
+            top: 55%;
+            right: 8%;
+            animation-delay: 3s;
+        }
+
+        .f5 {
+            top: 70%;
+            left: 5%;
+            animation-delay: 4s;
+        }
+
+        .f6 {
+            top: 80%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .f7 {
+            top: 12%;
+            right: 25%;
+            animation-delay: 3s;
+        }
+
+        .f8 {
+            top: 65%;
+            right: 25%;
+            animation-delay: 1.5s;
+        }
+
+        .f9 {
+            top: 35%;
+            left: 25%;
+            animation-delay: 4s;
+        }
+
+        .f10 {
+            top: 85%;
+            left: 30%;
+            animation-delay: 2.5s;
+        }
+
+        .f11 {
+            top: 50%;
+            right: 40%;
+            animation-delay: 5s;
+        }
+
+        .f12 {
+            top: 20%;
+            left: 40%;
+            animation-delay: 3.5s;
+        }
+
+
+        @keyframes floating {
+
+            0% {
+                transform: translate(0, 0) rotate(-8deg);
+            }
+
+            25% {
+                transform: translate(25px, -30px) rotate(8deg);
+            }
+
+            50% {
+                transform: translate(-20px, -60px) rotate(-5deg);
+            }
+
+            75% {
+                transform: translate(30px, -25px) rotate(10deg);
+            }
+
+            100% {
+                transform: translate(0, 0) rotate(-8deg);
+            }
+        }
+
+
+        /* ========================================
+           Footer
+        ======================================== */
+
+        footer {
+            text-align: center;
+
+            padding: 30px;
+
+            color: #000000;
+
+            font-weight: bold;
+        }
+
+
+        /* ========================================
+           Responsive สำหรับโทรศัพท์
+        ======================================== */
+
+        @media (max-width: 700px) {
+
+            .navbar {
+                padding: 10px;
+            }
+
+
+            .nav-menu {
+                gap: 6px;
+            }
+
+
+            .nav-menu button {
+                font-size: 11px;
+
+                padding: 8px 9px;
+            }
+
+
+            section {
+                padding: 130px 15px 60px;
+            }
+
+
+            .profile-image {
+                width: 260px;
+                height: 260px;
+            }
+
+
+            .info-box {
+                padding: 25px;
+            }
+
+
+            .info-box p {
+                font-size: 16px;
+            }
+
+
+            .introduction-box p {
+                font-size: 17px;
+            }
+
+
+            .works-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .contact-box {
+                padding: 25px;
+            }
+
+
+            .contact-item {
+                font-size: 16px;
+            }
+
+
+            .floating {
+                font-size: 22px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- ========================================
+         เมนูด้านบน
+    ========================================= -->
+
+    <nav class="navbar">
+
+        <ul class="nav-menu">
+
+            <li>
+                <button type="button" onclick="scrollToSection('home')">
+                    🦋 หน้าแรก 🦋
+                </button>
+            </li>
+
+            <li>
+                <button type="button" onclick="scrollToSection('introduction')">
+                    🦋 คำนำ 🦋
+                </button>
+            </li>
+
+            <li>
+                <button type="button" onclick="scrollToSection('profile')">
+                    🦋 เกี่ยวกับฉัน 🦋
+                </button>
+            </li>
+
+            <li>
+                <button type="button" onclick="scrollToSection('activities')">
+                    🦋 ผลงานและกิจกรรม 🦋
+                </button>
+            </li>
+
+            <li>
+                <button type="button" onclick="scrollToSection('contact')">
+                    🦋 ช่องทางการติดต่อ 🦋
+                </button>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- ========================================
+         ตัวโน้ตเพลง + โบว์หัวใจ
+    ========================================= -->
+
+    <div class="floating f1">♫ 🎀♥</div>
+    <div class="floating f2">♪ ♥🎀</div>
+    <div class="floating f3">♫ 🎀♥</div>
+    <div class="floating f4">♪ ♥🎀</div>
+    <div class="floating f5">♫ 🎀♥</div>
+    <div class="floating f6">♪ ♥🎀</div>
+    <div class="floating f7">♫ 🎀♥</div>
+    <div class="floating f8">♪ ♥🎀</div>
+    <div class="floating f9">♫ 🎀♥</div>
+    <div class="floating f10">♪ ♥🎀</div>
+    <div class="floating f11">♫ 🎀♥</div>
+    <div class="floating f12">♪ ♥🎀</div>
+
+
+    <!-- ========================================
+         หน้าแรก
+    ========================================= -->
+
+    <section id="home">
+
+        <h1 class="main-title">
+            PORTFOLIO
+        </h1>
+
+
+        <div class="profile-image">
+
+            <img
+                src="images/profile.jpg"
+                alt="รูป Portfolio ของกันต์ฤทัย"
+            >
+
+        </div>
+
+
+        <div class="info-box">
+
+            <p>
+                <span class="info-label">
+                    ชื่อ-นามสกุล
+                </span>
+                กันต์ฤทัย ใจสว่าง
+            </p>
+
+
+            <p>
+                <span class="info-label">
+                    Name
+                </span>
+                Kanruthai Jaisawang
+            </p>
+
+
+            <p>
+                <span class="info-label">
+                    ชื่อเล่น
+                </span>
+                กันต์
+            </p>
+
+
+            <p>
+                <span class="info-label">
+                    Nickname
+                </span>
+                kan
+            </p>
+
+
+            <p>
+                <span class="info-label">
+                    ระดับชั้น
+                </span>
+                มัธยมศึกษาชั้นปีที่ 6/3
+            </p>
+
+
+            <p>
+                <span class="info-label">
+                    แผนการเรียน
+                </span>
+                วิทยาศาสตร์-คณิตศาสตร์ (MSEP)
+            </p>
+
+
+            <p>
+                <span class="info-label">
+                    โรงเรียนที่กำลังศึกษาอยู่
+                </span>
+                โรงเรียนบ้านบึง "อุตสาหกรรมนุเคราะห์"
+            </p>
+
+
+            <p>
+                <span class="info-label">
+                    คณะ-สาขาและมหาวิทยาลัยที่สนใจศึกษาต่อ
+                </span>
+                คณะเทคนิคการแพทย์ ภาควิชากายภาพบำบัด
+                มหาวิทยาลัยเชียงใหม่
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================================
+         หน้าที่ 2 : คำนำ
+    ========================================= -->
+
+    <section id="introduction">
+
+        <h1 class="page-title">
+            คำนำ
+        </h1>
+
+
+        <div class="info-box introduction-box">
+
+            <p>
+                แฟ้มสะสมผลงาน (Portfolio) เล่มนี้
+                จัดทำขึ้นเพื่อเป็นตัวแทนในการนำเสนอข้อมูลเกี่ยวกับประวัติส่วนตัว
+                ความรู้ ความสามารถ ทักษะ และกิจกรรมต่างๆ ของข้าพเจ้า
+                โดยเฉพาะความสนใจและความมุ่งมั่นที่มีต่อการศึกษาต่อ
+                ภายในแฟ้มสะสมผลงานเล่มนี้ ประกอบด้วยประวัติส่วนตัว
+                และกิจกรรมที่ข้าพเจ้าได้เข้าร่วม
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================================
+         หน้าที่ 3 : ประวัติส่วนตัว
+    ========================================= -->
+
+    <section id="profile">
+
+        <h1 class="page-title">
+            เกี่ยวกับฉัน
+        </h1>
+
+
+        <div class="info-box introduction-box">
+
+            <p>
+                <span class="info-label">
+                    อายุ
+                </span>
+                17 ปี
+            </p>
+
+
+            <p>
+                <span class="info-label">
+                    วันเกิด
+                </span>
+                04/06/2552
+            </p>
+
+
+            <p>
+                <span class="info-label">
+                    สัญชาติ
+                </span>
+                ไทย
+            </p>
+
+
+            <p>
+                <span class="info-label">
+                    เชื้อชาติ
+                </span>
+                ไทย
+            </p>
+
+
+            <p>
+                <span class="info-label">
+                    ศาสนา
+                </span>
+                พุทธ
+            </p>
+
+
+            <p>
+                <span class="info-label">
+                    ความสามารถพิเศษ
+                </span>
+                อ่าน ฟัง เขียน และสื่อสารภาษาอังกฤษในชีวิตประจำวันได้
+            </p>
+
+
+            <p>
+                <span class="info-label">
+                    ทำไมอยากเข้าคณะและมหาลัยนี้
+                </span>
+                ได้รู้จักกับอาชีพนักกายภาพบำบัด
+                เลยได้ไปศึกษาเกี่ยวกับอาชีพนี้ผ่านโซเชียลมีเดีย
+                แล้วรู้สึกว่าการทำงานเข้ากับสิ่งที่อยากทำในอนาคต
+                และน่าจะเป็นอาชีพที่ยังมั่นคงอยู่ในอีก 10 ถึง 20 ปีข้างหน้า
+                พอรู้แล้วว่าจะเรียนคณะกายภาพบำบัด
+                จึงหามหาวิทยาลัยที่เข้ากับการใช้ชีวิต
+                มหาวิทยาลัยเชียงใหม่จึงตอบโจทย์ที่สุด
+                เป็นเมืองที่ไม่เร่งรีบ และบรรยากาศในมหาวิทยาลัยดี
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================================
+         หน้าที่ 4 : ผลงานและกิจกรรม
+    ========================================= -->
+
+    <section id="activities">
+
+        <h1 class="page-title">
+            ผลงานและกิจกรรม
+        </h1>
+
+
+        <div class="works-grid">
+
+
+            <!-- =========================
+                 รูปที่ 1
+            ========================== -->
+
+            <div class="work-card">
+
+                <img
+                    src="images/activity1.jpg"
+                    alt="ผลงานและกิจกรรมที่ 1"
+                >
+
+                <div class="work-title">
+                    ได้เข้าเรียนรายวิชาเคมี
+                    เรื่อง สารประกอบอินทรีย์และพอลิเมอร์
+                    ล่วงหน้าของ Chula MOOC
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 รูปที่ 2
+            ========================== -->
+
+            <div class="work-card">
+
+                <img
+                    src="images/IMG_6456.jpeg"
+                    alt="ผลงานและกิจกรรมที่ 2"
+                >
+
+                <div class="work-title">
+                    ไป Open House ของมหาวิทยาลัยมหิดล
+                    ในบูธกายภาพบำบัด ได้ฟังรุ่นพี่ที่เรียนอยู่
+                    เล่าการเรียนการสอน
+                    จึงยิ่งมีความสนใจในสาขากายภาพบำบัดมากขึ้น
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 รูปที่ 3
+            ========================== -->
+
+            <div class="work-card">
+
+                <img
+                    src="images/activity3.jpg"
+                    alt="ผลงานและกิจกรรมที่ 3"
+                >
+
+                <div class="work-title">
+                    ได้เข้าอบรม อุ่นใจไซเบอร์
+                    ช่วยสอนการใช้โซเชียลให้ปลอดภัย
+                    เป็นพลเมืองที่ดีในโซเชียล
+                    และการจัดการเวลาในการใช้งานหน้าจอ
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 รูปที่ 4
+            ========================== -->
+
+            <div class="work-card">
+
+                <img
+                    src="images/activity4.jpg"
+                    alt="ผลงานและกิจกรรมที่ 4"
+                >
+
+                <div class="work-title">
+                    ได้เป็นผู้ดูแลฐานกิจกรรมดาราศาสตร์
+                    ในงานวันวิทยาศาสตร์ของโรงเรียน
+                    ให้ความรู้เกี่ยวกับอวกาศแก่ผู้ที่เข้าร่วมกิจกรรม
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================================
+         หน้าที่ 5 : ช่องทางการติดต่อ
+    ========================================= -->
+
+    <section id="contact">
+
+        <h1 class="page-title">
+            ช่องทางการติดต่อ
+        </h1>
+
+
+        <div class="contact-box">
+
+
+            <!-- Gmail -->
+
+            <div class="contact-item">
+
+                <span class="contact-icon">
+                    ✉
+                </span>
+
+                <span>
+                    Gmail :
+                    <a href="mailto:kanruthai.jais@gmail.com">
+                        kanruthai.jais@gmail.com
+                    </a>
+                </span>
+
+            </div>
+
+
+            <!-- Tel -->
+
+            <div class="contact-item">
+
+                <span class="contact-icon">
+                    ☎
+                </span>
+
+                <span>
+                    Tel :
+                    <a href="tel:0924140622">
+                        0924140622
+                    </a>
+                </span>
+
+            </div>
+
+
+            <!-- Instagram -->
+
+            <div class="contact-item">
+
+                <span class="contact-icon">
+                    ◎
+                </span>
+
+                <span>
+                    IG :
+                    <a
+                        href="https://www.instagram.com/16kaxqn_/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        16kaxqn_
+                    </a>
+                </span>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================================
+         Footer
+    ========================================= -->
+
+    <footer>
+
+        © 2026 Kanruthai Jaisawang | Portfolio
+
+    </footer>
+
+
+    <!-- ========================================
+         JavaScript สำหรับเมนู
+         ไม่เปลี่ยน URL และไม่มี #
+    ========================================= -->
+
+    <script>
+
+        function scrollToSection(id) {
+
+            const section = document.getElementById(id);
+
+            if (section) {
+
+                section.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+            }
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
