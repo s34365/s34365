@@ -1,0 +1,45 @@
+<nav class="navbar">
+
+    <ul class="nav-menu">
+
+        <li>
+            <a href="javascript:void(0)" onclick="scrollToSection('home')">
+                🦋 หน้าแรก 🦋
+            </a>
+        </li>
+
+        <li>
+            <a href="javascript:void(0)" onclick="scrollToSection('introduction')">
+                🦋 คำนำ 🦋
+            </a>
+        </li>
+
+        <li>
+            <a href="javascript:void(0)" onclick="scrollToSection('profile')">
+                🦋 เกี่ยวกับฉัน 🦋
+            </a>
+        </li>
+
+        <li>
+            <a href="javascript:void(0)" onclick="scrollToSection('activities')">
+                🦋 ผลงานและกิจกรรม 🦋
+            </a>
+        </li>
+
+        <li>
+            <a href="javascript:void(0)" onclick="scrollToSection('contact')">
+                🦋 ช่องทางการติดต่อ 🦋
+            </a>
+        </li>
+
+    </ul>
+
+</nav>
+
+<script>
+function scrollToSection(id) {
+    document.getElementById(id).scrollIntoView({
+        behavior: "smooth"
+    });
+}
+</script>
