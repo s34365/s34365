@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ผลงานและกิจกรรมของกันต์ฤทัย ใจสว่าง">
+  <title>กันต์ฤทัย ใจสว่าง | ผลงานและกิจกรรม</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="stars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <header class="site-header">
+    <nav aria-label="เมนูหลัก">
+      <a href="index.html">ข้อมูลส่วนตัว</a>
+      <a href="about.html">เกี่ยวกับฉัน</a>
+      <a class="active" href="portfolio.html">ผลงานและกิจกรรม</a>
+      <a href="contact.html">ติดต่อ</a>
+    </nav>
+  </header>
+  <main class="page">
+    <section class="portfolio-section">
+      <div class="section-heading"><p class="eyebrow">SELECTED MOMENTS</p><h1>ผลงานและกิจกรรม</h1></div>
+      <div class="activity-grid">
+        <article class="activity-card"><button class="activity-photo" type="button" data-full-image="mooc.jpg" data-caption="กิจกรรม Chula MOOC"><img src="mooc.jpg" alt="กิจกรรม Chula MOOC"><span>คลิกเพื่อดูรูปใหญ่</span></button><p>ได้เรียนรายวิชาเคมีล่วงหน้า เรื่อง สารประกอบอินทรีย์และพอลิเมอร์ เพื่อเตรียมพร้อมสำหรับการเรียนมัธยมศึกษาปีที่ 6</p></article>
+        <article class="activity-card"><button class="activity-photo" type="button" data-full-image="cyber.jpg" data-caption="กิจกรรมอบรมการใช้อินเทอร์เน็ตอย่างปลอดภัย"><img src="cyber.jpg" alt="กิจกรรมอบรมการใช้อินเทอร์เน็ตอย่างปลอดภัย"><span>คลิกเพื่อดูรูปใหญ่</span></button><p>ได้เข้าร่วมอบรมการใช้อินเทอร์เน็ตอย่างปลอดภัย</p></article>
+        <article class="activity-card"><button class="activity-photo" type="button" data-full-image="mahidol.jpg" data-caption="กิจกรรม Open House มหาวิทยาลัยมหิดล"><img src="mahidol.jpg" alt="กิจกรรม Open House มหาวิทยาลัยมหิดล"><span>คลิกเพื่อดูรูปใหญ่</span></button><p>ได้ไป Open House ของมหาวิทยาลัยมหิดล ได้ไปฟังรุ่นพี่ที่บูธกายภาพ ให้คำแนะนำเกี่ยวกับสาขานี้ เลยทำให้สนใจกายภาพบำบัดมากยิ่งขึ้น</p></article>
+        <article class="activity-card"><button class="activity-photo" type="button" data-full-image="astro.jpg" data-caption="กิจกรรมวันวิทยาศาสตร์"><img src="astro.jpg" alt="กิจกรรมวันวิทยาศาสตร์"><span>คลิกเพื่อดูรูปใหญ่</span></button><p>จัดบูธให้ความรู้ด้านดาราศาสตร์ ในกิจกรรมวันวิทยาศาสตร์ของโรงเรียน</p></article>
+      </div>
+    </section>
+  </main>
+  <div class="image-modal" id="image-modal" role="dialog" aria-modal="true" aria-label="ดูรูปภาพขนาดใหญ่" hidden>
+    <button class="modal-close" type="button" aria-label="ปิดรูปภาพ">×</button>
+    <figure><img src="" alt=""><figcaption></figcaption></figure>
+  </div>
+  <script src="portfolio.js"></script>
+</body>
+</html>
